@@ -1,52 +1,112 @@
 body {
-  background-image: url("assets/sky.gif");
-  background-size: cover;
+  margin: 0;
   height: 100vh;
+  background: url("assets/grass.jpeg") center/cover no-repeat;
+  overflow: hidden;
+  position: relative;
 }
 
-img {
-  height: 150px;
-  border-radius: 20px;
-  padding: 10px;
-  transition: 1s;
-  filter: grayscale(100%);
-  /*      border: 3px solid blue; */
+/* Sheep styling */
+.sheep {
+  position: absolute;
+  width: 200px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
 }
 
-img:hover {
-  height: 400px;
-  filter: grayscale(0%);
-  /*   border: 1px solid red; */
+#sheep1 {
+  top: 40%;
+  left: 20%;
 }
 
-p:hover {
-  /*   transform: rotate(5deg); */
-  letter-spacing: 1em;
+#sheep2 {
+  top: 55%;
+  left: 50%;
 }
 
-.specialCenter {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+#sheep3 {
+  top: 30%;
+  left: 70%;
 }
 
-h1,
-a {
-  animation: coolAnimation 3s infinite;
+/* Expand on hover */
+.sheep:hover {
+  transform: scale(1.2);
 }
 
-#p1 {
-  animation: coolAnimation 5s infinite;
+/* BAA text */
+.baa {
+  position: fixed;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 80px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 5px black;
+  opacity: 0;
+  transition: all 1s ease;
+  pointer-events: none;
 }
 
-@keyframes coolAnimation {
+.baa.top {
+  top: 10%;
+  left: -200px;
+}
+
+.baa.bottom {
+  bottom: 10%;
+  right: -200px;
+}
+
+/* Animation when shown */
+.baa.show.top {
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 1;
+  animation: slideInLeft 3s ease forwards;
+}
+
+.baa.show.bottom {
+  right: 50%;
+  transform: translateX(50%);
+  opacity: 1;
+  animation: slideInRight 3s ease forwards;
+}
+
+@keyframes slideInLeft {
   0% {
-    color: red;
+    left: -200px;
+    opacity: 0;
   }
-  50% {
-    color: green;
+  25% {
+    left: 50%;
+    opacity: 1;
+  }
+  75% {
+    left: 50%;
+    opacity: 1;
   }
   100% {
-    color: blue;
+    left: 120%;
+    opacity: 0;
   }
 }
+
+@keyframes slideInRight {
+  0% {
+    right: -200px;
+    opacity: 0;
+  }
+  25% {
+    right: 50%;
+    opacity: 1;
+  }
+  75% {
+    right: 50%;
+    opacity: 1;
+  }
+  100% {
+    right: 120%;
+    opacity: 0;
+  }
+}
+
