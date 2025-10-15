@@ -1,50 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Q's Homepage</title>
-    <!--Update with your name-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sheep Field</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
-
   <body>
-    <div>
-      <h1>My name</h1>
-      <!--Update with your name-->
-      <p>
-        This is my website for <i>IML300 class</i>. Write a little bit about
-        yourself.
-      </p>
-    </div>
+    <div class="baa top">BAAAA</div>
+    <div class="baa bottom">BAAAA </div>
 
-    <div>
-      <h1>Presentation</h1>
-      <a href="">Pecha Kucha: Lorem Ipsum</a>
-    </div>
+    <img class="sheep" id="sheep1" src="assets/pngtree-flat-sheep-icon-png-image_16284923.png" />
+    <img class="sheep" id="sheep2" src="assets/pngtree-sheep-isolated-on-transparent-background-png-image_9173069.png" />
+    <img class="sheep" id="sheep3" src="assets/sheep-transparent-background-png.png" />
 
-    <div>
-      <h1>Projects</h1>
-      <h2>Project 1: Interactive Audio & Visual with p5.js</h2>
-      <a href="">Final: Lorem Ipsum</a>
-      <h2>Project 2: HyperNarrative</h2>
-      <a href="">Concept</a><br />
-      <a href="">Final: Lorem Ipsum</a>
-      <h2>Project 3: Networked Care</h2>
-      <a href="">Final: Lorem Ipsum</a>
-    </div>
+    <script>
+      const sheepList = document.querySelectorAll(".sheep");
+      const baaTop = document.querySelector(".baa.top");
+      const baaBottom = document.querySelector(".baa.bottom");
 
-    <div>
-      <h1>Exercises</h1>
-      <ul>
-        <li><a href="">p5.js sketch 1</a></li>
-        <li><a href="">p5.js sketch 2</a></li>
-        <li><a href="">p5.js sketch 3</a></li>
-        <li><a href="">p5.js sketch 4</a></li>
-      </ul>
-    </div>
+      sheepList.forEach((sheep) => {
+        sheep.addEventListener("mouseenter", () => {
+          baaTop.classList.add("show");
+          baaBottom.classList.add("show");
 
-    <!--add a h1 element called 'Thoughts' Below-->
-    <h1>Thoughts</h1>
-
-    <footer>Fall, 2025.</footer>
+          setTimeout(() => {
+            baaTop.classList.remove("show");
+            baaBottom.classList.remove("show");
+          }, 3000);
+        });
+      });
+    </script>
   </body>
 </html>
