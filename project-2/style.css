@@ -1,112 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap');
+
 body {
+  background-color: #000;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
   margin: 0;
+  padding: 0;
   height: 100vh;
-  background: url("assets/grass.jpeg") center/cover no-repeat;
-  overflow: hidden;
-  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Sheep styling */
-.sheep {
-  position: absolute;
-  width: 200px;
-  transition: transform 0.3s ease;
-  cursor: pointer;
+.container {
+  max-width: 600px;
+  text-align: center;
+  padding: 2rem;
+  animation: fadeIn 2s ease;
 }
 
-#sheep1 {
-  top: 40%;
-  left: 20%;
+h1 {
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.4px;
 }
 
-#sheep2 {
-  top: 55%;
-  left: 50%;
+p {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  font-weight: 300;
+  color: #fff;
+  margin-bottom: 2rem;
 }
 
-#sheep3 {
-  top: 30%;
-  left: 70%;
+.choices {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
 }
 
-/* Expand on hover */
-.sheep:hover {
-  transform: scale(1.2);
+a {
+  background-color: #fff;
+  color: #000;
+  text-decoration: none;
+  border-radius: 50%;
+  width: 130px;
+  height: 130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: transform 0.8s ease-in-out;
 }
 
-/* BAA text */
-.baa {
-  position: fixed;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 80px;
-  font-weight: bold;
-  color: white;
-  text-shadow: 2px 2px 5px black;
-  opacity: 0;
-  transition: all 1s ease;
-  pointer-events: none;
+a:hover {
+  transform: scale(1.15);
 }
 
-.baa.top {
-  top: 10%;
-  left: -200px;
+.explain {
+  font-size: 1rem;
+  color: #ddd;
+  margin-top: 2rem;
+  line-height: 1.7;
+  font-weight: 300;
 }
 
-.baa.bottom {
-  bottom: 10%;
-  right: -200px;
+.restart {
+  display: inline-flex;
+  margin-top: 2.5rem;
+  background-color: #fff;
+  color: #000;
+  text-decoration: none;
+  border-radius: 50%;
+  width: 130px;
+  height: 130px;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  transition: transform 0.8s ease-in-out;
 }
 
-/* Animation when shown */
-.baa.show.top {
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 1;
-  animation: slideInLeft 3s ease forwards;
+.restart:hover {
+  transform: scale(1.15);
 }
 
-.baa.show.bottom {
-  right: 50%;
-  transform: translateX(50%);
-  opacity: 1;
-  animation: slideInRight 3s ease forwards;
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
-
-@keyframes slideInLeft {
-  0% {
-    left: -200px;
-    opacity: 0;
-  }
-  25% {
-    left: 50%;
-    opacity: 1;
-  }
-  75% {
-    left: 50%;
-    opacity: 1;
-  }
-  100% {
-    left: 120%;
-    opacity: 0;
-  }
-}
-
-@keyframes slideInRight {
-  0% {
-    right: -200px;
-    opacity: 0;
-  }
-  25% {
-    right: 50%;
-    opacity: 1;
-  }
-  75% {
-    right: 50%;
-    opacity: 1;
-  }
-  100% {
-    right: 120%;
-    opacity: 0;
-  }
-}
-
