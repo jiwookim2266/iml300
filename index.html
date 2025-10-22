@@ -2,19 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>A Quiet Morning</title>
+  <title>Start</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    body { background-color: #000; }
+    .container { animation: fadeIn 4s ease; }
+  </style>
 </head>
 <body>
-  <div class="container fade-in">
-    <h1>A Quiet Morning</h1>
-    <p>You wake up to the sound of the clock ticking. The sunlight feels dim today.</p>
-    <p>What will you do first?</p>
+  <div class="container">
+    <p>
+      You are seventy-eight years old.<br>
+      You live alone in a small apartment on the outskirts of Tokyo.<br><br>
+      The neighbors moved out months ago. The hallway stays quiet.<br>
+      You used to hear laughter through the thin walls — now it’s only the hum of the refrigerator.<br><br>
+      The light through the curtains looks different today.  
+      You can’t tell if it’s morning or afternoon.<br><br>
+      Another day begins.
+    </p>
 
-    <div class="choices">
-      <a href="call.html">Call someone</a>
-      <a href="eat.html">Eat something</a>
+    <div class="start-button">
+      <a href="page1.html">Start</a>
     </div>
   </div>
 </body>
 </html>
+<script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+<script src="scene2.js"></script>
