@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Final 2</title>
+
+  <!-- p5.js scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js"></script>
+  <script src="sketch.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* keep the sketch in the background */
+    canvas {
+      position: fixed !important;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* body layout */
+    body.white {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background-color: #fff;
+      color: #000;
+    }
+
+    .container {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      max-width: 600px;
+      padding: 2rem;
+    }
+
+    p {
+      color: #000;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      font-weight: 300;
+      margin-bottom: 2rem;
+    }
+
+    .choices {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .choice {
+      background-color: #000;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: transform 0.8s ease-in-out, opacity 0.5s ease;
+    }
+
+    .choice:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+
+<body class="white">
+  <div class="container">
+    <p>
+      Kodokushi is not only about dying alone. It is about the slow fading of connection, the point where life continues without anyone there to notice.<br>
+      It reflects a deeper loneliness within modern society, where independence quietly replaces closeness, and aging becomes something to manage instead of something to share.<br><br>
+      To speak of kodokushi is to ask what it means to care for one another, not only in moments of crisis but in the quiet of ordinary days.<br>
+      It matters because behind every number are people who still wished to be seen, heard, and remembered, even once more.
+    </p>
+
+    <div class="choices">
+      <a href="index.html" class="choice">Restart</a>
+    </div>
+  </div>
+</body>
+</html>
