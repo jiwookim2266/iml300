@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neighbors</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="midgrey">
+  <div class="time">March 13, 2025 — 7:56 PM</div>
+
+  <div class="container normal">
+    <p>Footsteps in the hallway. A soft laugh.<br>
+    You wonder if your <span class="highlight">neighbors</span> would remember your name.</p>
+
+    <div class="choices">
+      <a href="page6a.html" class="choice">Say hello</a>
+      <a href="page7.html" class="choice">Ignore</a>
+    </div>
+  </div>
+
+  <script>
+    // remove blinking cursor after typing
+    const time = document.querySelector('.time');
+    setTimeout(() => {
+      if (time) time.style.borderRight = 'none';
+    }, 2500);
+  </script>
+</body>
+</html>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const links = document.querySelectorAll(".choice[href]");
+
+    links.forEach(link => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault(); // stop immediate jump
+        const href = link.getAttribute("href");
+
+        // add fade-out class to trigger CSS animation
+        document.body.classList.add("fade-out");
+
+        // wait for fade animation to finish, then go
+        setTimeout(() => {
+          window.location.href = href;
+        }, 800); // matches fade duration below
+      });
+    });
+  });
+</script>

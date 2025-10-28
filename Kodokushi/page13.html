@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Next Morning</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="white">
+  <div class="time static">March 16, 2025 — 7:13 AM</div>
+
+  <div class="container normal">
+    <p>The light does not reach the room today.<br>
+    The curtains stay closed, untouched.<br>
+    The refrigerator hums on, steady and unaware.<br>
+    The air feels heavy, unmoving.<br><br>
+   <span class="highlight">The day begins without you.</span> <br>
+    Your body rests where it was, quiet and cold.</p>
+
+    <div class="choices">
+      <a href="page14.html" class="choice">Continue</a>
+    </div>
+  </div>
+
+  <script>
+    // No typing animation, ensure consistent centering
+    const time = document.querySelector('.time');
+    if (time) {
+      time.style.width = "auto";
+      time.style.borderRight = "none";
+    }
+  </script>
+</body>
+</html>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const links = document.querySelectorAll(".choice[href]");
+
+    links.forEach(link => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault(); // stop immediate jump
+        const href = link.getAttribute("href");
+
+        // add fade-out class to trigger CSS animation
+        document.body.classList.add("fade-out");
+
+        // wait for fade animation to finish, then go
+        setTimeout(() => {
+          window.location.href = href;
+        }, 800); // matches fade duration below
+      });
+    });
+  });
+</script>

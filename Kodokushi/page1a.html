@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Response</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="darkgrey">
+  <div class="container response">
+    <p>You boil the water slowly. The flame flickers weakly.<br>
+    You eat <span class="highlight">in silence</span>. The sound of the spoon against the bowl feels louder than usual.</p>
+
+    <div class="choices">
+      <a href="page2.html" class="choice">Continue</a>
+    </div>
+  </div>
+</body>
+</html>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const links = document.querySelectorAll(".choice[href]");
+
+    links.forEach(link => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault(); // stop immediate jump
+        const href = link.getAttribute("href");
+
+        // add fade-out class to trigger CSS animation
+        document.body.classList.add("fade-out");
+
+        // wait for fade animation to finish, then go
+        setTimeout(() => {
+          window.location.href = href;
+        }, 800); // matches fade duration below
+      });
+    });
+  });
+</script>

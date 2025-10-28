@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pain Returns</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="midgrey">
+  <div class="time">March 15, 2025 — 5:40 PM</div>
+
+  <div class="container normal">
+    <p>The <span class="highlight">ache</span> in your body returns, stronger.<br>
+    You think about calling someone again.</p>
+
+    <div class="choices">
+      <a href="page11a.html" class="choice">Call</a>
+      <a href="page12.html" class="choice">Do nothing</a>
+    </div>
+  </div>
+
+  <script>
+    const time = document.querySelector('.time');
+    setTimeout(() => {
+      if (time) time.style.borderRight = 'none';
+    }, 2500);
+  </script>
+</body>
+</html>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const links = document.querySelectorAll(".choice[href]");
+
+    links.forEach(link => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault(); // stop immediate jump
+        const href = link.getAttribute("href");
+
+        // add fade-out class to trigger CSS animation
+        document.body.classList.add("fade-out");
+
+        // wait for fade animation to finish, then go
+        setTimeout(() => {
+          window.location.href = href;
+        }, 800); // matches fade duration below
+      });
+    });
+  });
+</script>

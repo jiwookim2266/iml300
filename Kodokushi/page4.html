@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Window</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="midgrey">
+  <div class="time">March 12, 2025 — 6:28 PM</div>
+
+  <div class="container normal">
+    <p>The street outside glows orange.<br>
+    You <span class="highlight">can’t remember</span> the last time you went out.</p>
+
+    <div class="choices">
+      <a href="#" class="choice">Go for a walk</a>
+      <a href="page5.html" class="choice">Close the curtains</a>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const links = document.querySelectorAll(".choice");
+
+      links.forEach(link => {
+        link.addEventListener("click", (e) => {
+          // if this choice is the disappearing one (href="#")
+          if (link.getAttribute("href") === "#") {
+            e.preventDefault();
+            link.style.transition = "opacity 1.8s ease, transform 1.8s ease";
+            link.style.opacity = "0";
+            link.style.transform = "scale(0.7)";
+            link.style.pointerEvents = "none";
+            return; // stop here—don’t navigate or fade out the page
+          }
+
+          // normal navigation fade-out
+          e.preventDefault();
+          const href = link.getAttribute("href");
+          document.body.classList.add("fade-out");
+          setTimeout(() => {
+            window.location.href = href;
+          }, 800);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
+

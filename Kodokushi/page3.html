@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Call Family</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="midgrey">
+  <div class="time">March 12, 2025 — 3:15 PM</div>
+
+  <div class="container normal">
+    <p>You think about <span class="highlight">calling your son</span>.<br>
+    It’s been a <span class="highlight">few months</span> since you last heard his voice.</p>
+
+    <div class="choices">
+      <a href="page3a.html" class="choice">Call</a>
+      <a href="page4.html" class="choice">Don’t call</a>
+    </div>
+  </div>
+</body>
+</html>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const links = document.querySelectorAll(".choice[href]");
+
+    links.forEach(link => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault(); // stop immediate jump
+        const href = link.getAttribute("href");
+
+        // add fade-out class to trigger CSS animation
+        document.body.classList.add("fade-out");
+
+        // wait for fade animation to finish, then go
+        setTimeout(() => {
+          window.location.href = href;
+        }, 800); // matches fade duration below
+      });
+    });
+  });
+</script>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Final Sequence</title>
+
+  <!-- p5.js background -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js"></script>
+  <script src="sketch.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* keep p5 background behind */
+    canvas {
+      position: fixed !important;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* center both sections */
+    .container.final {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      width: 70%;
+      max-width: 750px;
+      padding: 2.5rem;
+      z-index: 10;
+    }
+
+    /* fade transition between sections */
+    .section {
+      opacity: 0;
+      transition: opacity 2s ease;
+      pointer-events: none;
+    }
+
+    .section.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .section.inactive {
+      opacity: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
+
+<body class="white">
+  <!-- Final 1 -->
+  <div id="final1" class="container final section active">
+    <p>
+      In Japan, thousands of elderly people pass away alone every year.<br>
+      Their absence often goes unnoticed until the smell, the rent, or silence alerts someone.<br><br>
+      This is known as <span class="highlight">kodokushi</span>, which translates to <span class="highlight">“lonely death.”</span><br><br>
+      Behind every case is a person who once had a living story. With time, the world around them becomes smaller and smaller — one unreturned call, one unopened envelope, one quiet meal at a time.
+    </p>
+
+    <div class="choices">
+      <a href="#" id="toFinal2" class="choice">Continue</a>
+    </div>
+  </div>
+
+  <!-- Final 2 -->
+  <div id="final2" class="container final section inactive">
+    <p>
+      Kodokushi is not only about dying alone. It is about the slow fading of connection — the point where life continues without anyone there to notice.<br>
+      It reflects a deeper loneliness within modern society, where independence quietly replaces closeness, and aging becomes something to manage instead of something to share.<br><br>
+      To speak of kodokushi is to ask what it means to care for one another — not only in moments of crisis but in the quiet of ordinary days.<br>
+      It matters because behind every number are people who still wished to be <span class="highlight">seen</span>, <span class="highlight">heard</span>, and <span class="highlight">remembered</span>, even once more.
+    </p>
+
+    <div class="choices">
+      <a href="index.html" class="choice restart">Restart</a>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const btnNext = document.getElementById("toFinal2");
+      const section1 = document.getElementById("final1");
+      const section2 = document.getElementById("final2");
+      const restart = section2.querySelector(".restart");
+
+      btnNext.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        // fade out section1
+        section1.classList.remove("active");
+        section1.classList.add("inactive");
+
+        // fade in section2 after short delay (CSS handles fade timing)
+        setTimeout(() => {
+          section2.classList.remove("inactive");
+          section2.classList.add("active");
+        }, 1500);
+      });
+
+      // smooth fade-out on restart click
+      restart.addEventListener("click", (e) => {
+        e.preventDefault();
+        document.body.classList.add("fade-out");
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 800);
+      });
+    });
+  </script>
+</body>
+</html>

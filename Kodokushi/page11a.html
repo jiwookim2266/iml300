@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>No Help</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="midgrey">
+  <div class="container response">
+    <p>You press the call button and wait. <span class="highlight">No one answers.</span><br>
+    You think about calling a hospital, then picture the bills.<br>
+    You set the phone down and lie still.</p>
+
+    <div class="choices">
+      <a href="page12.html" class="choice">Continue</a>
+    </div>
+  </div>
+</body>
+</html>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const links = document.querySelectorAll(".choice[href]");
+
+    links.forEach(link => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault(); // stop immediate jump
+        const href = link.getAttribute("href");
+
+        // add fade-out class to trigger CSS animation
+        document.body.classList.add("fade-out");
+
+        // wait for fade animation to finish, then go
+        setTimeout(() => {
+          window.location.href = href;
+        }, 800); // matches fade duration below
+      });
+    });
+  });
+</script>
