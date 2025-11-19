@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Aging Population — Visualization</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: "Inter", sans-serif;
+    overflow: hidden;
+    background: white;
+  }
+
+  canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+  }
+
+  .description-wrapper {
+    position: absolute;
+    bottom: 7%;
+    width: 100%;
+    text-align: center;
+    color: black;
+    z-index: 10;
+    animation: fadeIn 2s ease forwards;
+    opacity: 0;
+  }
+
+  .desc-line {
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.45;
+  }
+
+  .home-btn {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    width: 80px;
+    height: 80px;
+    background: #ff0000;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 20;
+    transition: transform 0.3s ease;
+    border: none;
+  }
+
+  .home-btn:hover {
+    transform: scale(1.18);
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js"></script>
+<script src="sketch.js"></script>
+</head>
+
+<body>
+
+<button class="home-btn" onclick="window.location.href='firstpage.html'"></button>
+
+<div class="description-wrapper">
+  <div class="desc-line">As Korea’s population ages, mobility, cities, and communities reshape around shifting needs.</div>
+  <div class="desc-line">This visualization highlights how the older population grows—and how space adjusts around them.</div>
+</div>
+
+</body>
+</html>

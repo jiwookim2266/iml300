@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Korea Population Story – Page 2</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav class="top-nav">
+  <a href="#">Resources</a>
+  <a href="#">About</a>
+</nav>
+
+<div class="container">
+  <div class="text-block">
+    <h1>
+      <span class="headline-line nowrap">
+        A nation growing <span class="red">older,</span>
+      </span>
+      <span class="headline-line">
+        and <span class="red">fewer.</span>
+      </span>
+    </h1>
+
+    <p>
+      Korea’s demographic decline touches everything—<br>
+      families, cities, and the future ahead.
+    </p>
+
+    <p>Explore the issue through interactive data visualizations.</p>
+  </div>
+
+  <a href="#" class="circle-btn circle1"><span class="label">Declining Population</span></a>
+  <a href="#" class="circle-btn circle2"><span class="label">Aging Society</span></a>
+  <a href="#" class="circle-btn circle3"><span class="label">Low Birth Rate</span></a>
+</div>
+
+<script>
+  const circles = document.querySelectorAll(".circle-btn");
+  const speeds = [];
+  const positions = [];
+
+  function initCircles() {
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+
+    circles.forEach((c, i) => {
+      const size = c.offsetWidth;
+      const x = Math.random() * (w - size - 40) + 20;
+      const y = Math.random() * (h - size - 40) + 20;
+
+      positions[i] = { x, y };
+      c.style.left = x + "px";
+      c.style.top = y + "px";
+
+      speeds[i] = {
+        vx: (Math.random() * 0.15 + 0.03) * (Math.random() > 0.5 ? 1 : -1),
+        vy: (Math.random() * 0.15 + 0.03) * (Math.random() > 0.5 ? 1 : -1)
+      };
+    });
+  }
+
+  function animateCircles() {
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+
+    circles.forEach((c, i) => {
+      const size = c.offsetWidth;
+      const p = positions[i];
+
+      p.x += speeds[i].vx;
+      p.y += speeds[i].vy;
+
+      if (p.x <= 0 || p.x + size >= w) speeds[i].vx *= -1;
+      if (p.y <= 0 || p.y + size >= h) speeds[i].vy *= -1;
+
+      c.style.left = p.x + "px";
+      c.style.top = p.y + "px";
+    });
+
+    circles.forEach(c => c.style.filter = "brightness(1)");
+
+    circles.forEach((c1, i) => {
+      const r1 = c1.getBoundingClientRect();
+      const c1x = r1.left + r1.width / 2;
+      const c1y = r1.top + r1.height / 2;
+      const rad1 = r1.width / 2;
+
+      circles.forEach((c2, j) => {
+        if (i === j) return;
+
+        const r2 = c2.getBoundingClientRect();
+        const c2x = r2.left + r2.width / 2;
+        const c2y = r2.top + r2.height / 2;
+        const rad2 = r2.width / 2;
+
+        const dx = c1x - c2x;
+        const dy = c1y - c2y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < rad1 + rad2) {
+          c1.style.filter = "brightness(1.5)";
+          c2.style.filter = "brightness(1.5)";
+        }
+      });
+    });
+
+    requestAnimationFrame(animateCircles);
+  }
+
+  window.addEventListener("load", () => {
+    initCircles();
+    animateCircles();
+  });
+
+  window.addEventListener("resize", initCircles);
+</script>
+
+</body>
+</html>
+

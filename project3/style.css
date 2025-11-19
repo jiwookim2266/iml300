@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background: white;
+  overflow: hidden;
+  opacity: 0;
+  animation: fadeInBody 1.2s ease forwards;
+}
+
+@keyframes fadeInBody {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.top-nav {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  display: flex;
+  gap: 2rem;
+  z-index: 20;
+}
+
+.top-nav a {
+  font-size: 1.05rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: black;
+  opacity: 0.8;
+  transition: opacity 0.25s;
+}
+
+.top-nav a:hover {
+  opacity: 1;
+}
+
+.text-block {
+  position: absolute;
+  bottom: 10%;
+  left: 8%;
+  max-width: 700px;
+  color: black;
+  z-index: 10;
+}
+
+.text-block h1 {
+  font-size: 4.4rem;
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 1.4rem;
+}
+
+.headline-line {
+  display: block;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.red {
+  color: #FF0000;
+  font-weight: 800;
+}
+
+.text-block p {
+  font-size: 1.35rem;
+  line-height: 1.45;
+  margin-bottom: 0.7rem;
+  opacity: 0.9;
+}
+
+.circle-btn {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.25s, filter 0.3s;
+  z-index: 1;
+}
+
+.circle1 { background: #FF5D5D; }
+.circle2 { background: #960000; }
+.circle3 { background: #FF0000; }
+
+.circle-btn .label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 1rem;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+
+.circle-btn:hover .label {
+  opacity: 1;
+}
+
+.circle-btn:hover {
+  transform: scale(1.07);
+}
