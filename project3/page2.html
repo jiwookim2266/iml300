@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Korea Population Story – Page 2</title>
+  <title>Korean Population Story – Page 2</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -10,34 +10,38 @@
 
 <body>
 
-<nav class="top-nav">
-  <a href="#">Resources</a>
-  <a href="#">About</a>
-</nav>
+  <nav class="top-nav">
+    <a href="#">Resources</a>
+    <a href="#">About</a>
+  </nav>
 
-<div class="container">
-  <div class="text-block">
-    <h1>
-      <span class="headline-line nowrap">
-        A nation growing <span class="red">older,</span>
-      </span>
-      <span class="headline-line">
-        and <span class="red">fewer.</span>
-      </span>
-    </h1>
+  <div class="container">
 
-    <p>
-      Korea’s demographic decline touches everything—<br>
-      families, cities, and the future ahead.
-    </p>
+    <div class="page2-text">
+      <div class="page2-text-content">
+        <h1>
+          <span class="headline-line nowrap">
+            A nation growing <span class="red">older,</span>
+          </span>
+          <span class="headline-line">
+            and <span class="red">fewer.</span>
+          </span>
+        </h1>
 
-    <p>Explore the issue through interactive data visualizations.</p>
+        <p>
+          Korea’s demographic decline touches everything—<br>
+          families, cities, and the future ahead.
+        </p>
+
+        <p>Explore the issue through interactive data visualizations.</p>
+      </div>
+    </div>
+
+    <a href="page5.html" class="circle-btn circle1"><span class="label">Declining Population</span></a>
+    <a href="page3.html" class="circle-btn circle2"><span class="label">Aging Society</span></a>
+    <a href="page4.html" class="circle-btn circle3"><span class="label">Low Birth Rate</span></a>
+
   </div>
-
-  <a href="#" class="circle-btn circle1"><span class="label">Declining Population</span></a>
-  <a href="#" class="circle-btn circle2"><span class="label">Aging Society</span></a>
-  <a href="#" class="circle-btn circle3"><span class="label">Low Birth Rate</span></a>
-</div>
 
 <script>
   const circles = document.querySelectorAll(".circle-btn");
@@ -49,17 +53,17 @@
     const h = window.innerHeight;
 
     circles.forEach((c, i) => {
-      const size = c.offsetWidth;
-      const x = Math.random() * (w - size - 40) + 20;
-      const y = Math.random() * (h - size - 40) + 20;
+      const size = c.offsetWidth || 160;
+      const x = Math.random() * (w - size - 60) + 30;
+      const y = Math.random() * (h - size - 60) + 30;
 
       positions[i] = { x, y };
       c.style.left = x + "px";
       c.style.top = y + "px";
 
       speeds[i] = {
-        vx: (Math.random() * 0.15 + 0.03) * (Math.random() > 0.5 ? 1 : -1),
-        vy: (Math.random() * 0.15 + 0.03) * (Math.random() > 0.5 ? 1 : -1)
+        vx: (Math.random() * 0.12 + 0.02) * (Math.random() > 0.5 ? 1 : -1),
+        vy: (Math.random() * 0.12 + 0.02) * (Math.random() > 0.5 ? 1 : -1)
       };
     });
   }
@@ -71,7 +75,6 @@
     circles.forEach((c, i) => {
       const size = c.offsetWidth;
       const p = positions[i];
-
       p.x += speeds[i].vx;
       p.y += speeds[i].vy;
 
@@ -122,4 +125,3 @@
 
 </body>
 </html>
-

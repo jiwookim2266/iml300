@@ -2,95 +2,76 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Korea Population Story</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: "Inter", sans-serif;
-      background: white;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      overflow: hidden;
-      opacity: 1;
-      transition: opacity 1.2s ease;
-      animation: fadeInBody 1.4s ease forwards;
-    }
-
-    @keyframes fadeInBody {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    .fade-out {
-      opacity: 0;
-    }
-
-    .title {
-      font-size: 3.3rem;
-      font-weight: 800;
-      opacity: 0;
-      animation: fadeIn 2s forwards;
-      animation-delay: 0.5s;
-    }
-
-    .phrase {
-      font-size: 1.7rem;
-      margin-top: 1.7rem;
-      opacity: 0;
-      animation: fadeIn 2s forwards;
-      animation-delay: 2.3s;
-    }
-
-    .enter-btn {
-      margin-top: 3rem;
-      width: 120px;
-      height: 120px;
-      background: #FF0000;
-      border-radius: 50%;
-      border: none;
-      cursor: pointer;
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: white;
-      opacity: 0;
-      animation: fadeIn 2s forwards;
-      animation-delay: 4.1s;
-      transition: transform 0.3s ease;
-    }
-
-    .enter-btn:hover {
-      transform: scale(1.18);
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(28px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+  <title>Korean Population Story</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <div class="title">Korea Population Story</div>
+  <div class="text-block">
+    <div class="title type-target" id="title"></div>
 
-  <div class="phrase">Understanding a crisis that quietly reshapes the future.</div>
+    <div class="phrase-line type-target" id="p1"></div>
+    <div class="phrase-line type-target" id="p2"></div>
+    <div class="phrase-line type-target" id="p3"></div>
+  </div>
 
-  <button class="enter-btn" onclick="fadeToNext()">Enter</button>
+  <button class="enter-btn" id="enter"><span id="enter-text">Enter</span></button>
 
   <script>
-    function fadeToNext() {
-      document.body.classList.add("fade-out");
+    function typeWriter(el, text, speed, callback) {
+      let i = 0;
+      function type() {
+        if (i < text.length) {
+          el.innerHTML += text.charAt(i);
+          i++;
+          setTimeout(type, speed);
+        } else if (callback) callback();
+      }
+      type();
+    }
+
+    const titleText = "Korean Population Story";
+    const line1 = "Understanding a";
+    const line2 = "crisis that quietly";
+    const line3 = "reshapes the future.";
+
+    const titleEl = document.getElementById("title");
+    const p1 = document.getElementById("p1");
+    const p2 = document.getElementById("p2");
+    const p3 = document.getElementById("p3");
+    const btn = document.getElementById("enter");
+
+    document.addEventListener("DOMContentLoaded", () => {
+      typeWriter(titleEl, titleText, 40, () => {
+        setTimeout(() => {
+          typeWriter(p1, line1, 25, () => {
+            setTimeout(() => {
+              typeWriter(p2, line2, 25, () => {
+                setTimeout(() => {
+                  typeWriter(p3, line3, 25, () => {
+                    setTimeout(() => btn.classList.add("visible"), 250);
+                  });
+                }, 250);
+              });
+            }, 250);
+          });
+        }, 250);
+      });
+    });
+
+    btn.addEventListener("click", () => {
+      document.getElementById("enter-text").style.opacity = "0";
+      btn.classList.add("expanding");
+      document.body.classList.add("to-red");
+      setTimeout(() => {
+        document.body.classList.add("fade-white");
+      }, 1600);
       setTimeout(() => {
         window.location.href = "page2.html";
-      }, 1200);
-    }
+      }, 2600);
+    });
   </script>
 
 </body>

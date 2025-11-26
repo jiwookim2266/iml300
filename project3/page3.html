@@ -1,80 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Aging Population — Visualization</title>
+  <meta charset="UTF-8">
+  <title>Aging Society – Korea Population Story</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  <link rel="stylesheet" href="style.css">
 
-  body {
-    font-family: "Inter", sans-serif;
-    overflow: hidden;
-    background: white;
-  }
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js"></script>
+  <script src="sketch.js"></script>
 
-  canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 0;
-  }
+  <style>
+    canvas {
+      position: fixed !important;
+      top: 50%;
+      left: 28%; 
+      transform: translate(-50%, -50%) scale(0.75);
+      z-index: 1;
+      pointer-events: none;
+    }
 
-  .description-wrapper {
-    position: absolute;
-    bottom: 7%;
-    width: 100%;
-    text-align: center;
-    color: black;
-    z-index: 10;
-    animation: fadeIn 2s ease forwards;
-    opacity: 0;
-  }
+    .page3-layout {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      z-index: 10;
+      pointer-events: none;
+    }
 
-  .desc-line {
-    font-size: 1.25rem;
-    font-weight: 400;
-    line-height: 1.45;
-  }
+    .page3-inner {
+      position: absolute;
+      top: 50%;
+      right: 22%;                 
+      transform: translateY(-50%);
+      max-width: 520px;
+      pointer-events: auto;
+    }
 
-  .home-btn {
-    position: absolute;
-    top: 5%;
-    right: 5%;
-    width: 80px;
-    height: 80px;
-    background: #ff0000;
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 20;
-    transition: transform 0.3s ease;
-    border: none;
-  }
+    .page3-title {
+      font-size: 5rem;
+      font-weight: 400;
+      margin-bottom: 1.2rem;
+    }
 
-  .home-btn:hover {
-    transform: scale(1.18);
-  }
+    .page3-desc {
+      font-size: 1.7rem;
+      line-height: 1.35;
+      opacity: 0.85;
+      margin-bottom: 2rem;
+    }
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(18px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-</style>
+    .back-btn {
+      font-size: 1.3rem;
+      color: #FF0000;
+      text-decoration: none;
+      border-bottom: 1px solid #FF0000;
+      transition: opacity 0.3s;
+    }
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js"></script>
-<script src="sketch.js"></script>
+    .back-btn:hover {
+      opacity: 0.7;
+    }
+
+    .top-nav a:first-child {
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
 
-<button class="home-btn" onclick="window.location.href='firstpage.html'"></button>
+<nav class="top-nav" style="z-index: 20;">
+  <a href="page2.html">Home</a>
+  <a href="#">Resources</a>
+  <a href="#">About</a>
+</nav>
 
-<div class="description-wrapper">
-  <div class="desc-line">As Korea’s population ages, mobility, cities, and communities reshape around shifting needs.</div>
-  <div class="desc-line">This visualization highlights how the older population grows—and how space adjusts around them.</div>
+<div class="page3-layout">
+  <div class="page3-inner">
+    <h1 class="page3-title">Aging Society</h1>
+
+    <p class="page3-desc">
+      Korea is becoming one of the world's oldest societies.<br>
+      This visualization reflects how shifting age structures reshape
+      work, cities, and everyday life.
+    </p>
+
+    <a href="page2.html" class="back-btn">← Back</a>
+  </div>
 </div>
 
 </body>
