@@ -1,95 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Aging Society – Korea Population Story</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="style.css">
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js"></script>
-  <script src="sketch.js"></script>
-
-  <style>
-    canvas {
-      position: fixed !important;
-      top: 50%;
-      left: 28%; 
-      transform: translate(-50%, -50%) scale(0.75);
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    .page3-layout {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-      z-index: 10;
-      pointer-events: none;
-    }
-
-    .page3-inner {
-      position: absolute;
-      top: 50%;
-      right: 22%;                 
-      transform: translateY(-50%);
-      max-width: 520px;
-      pointer-events: auto;
-    }
-
-    .page3-title {
-      font-size: 5rem;
-      font-weight: 400;
-      margin-bottom: 1.2rem;
-    }
-
-    .page3-desc {
-      font-size: 1.7rem;
-      line-height: 1.35;
-      opacity: 0.85;
-      margin-bottom: 2rem;
-    }
-
-    .back-btn {
-      font-size: 1.3rem;
-      color: #FF0000;
-      text-decoration: none;
-      border-bottom: 1px solid #FF0000;
-      transition: opacity 0.3s;
-    }
-
-    .back-btn:hover {
-      opacity: 0.7;
-    }
-
-    .top-nav a:first-child {
-      display: none;
-    }
-  </style>
+  <script src="sketch3.js"></script>
 </head>
 
-<body>
+<body class="page3">
 
-<nav class="top-nav" style="z-index: 20;">
-  <a href="page2.html">Home</a>
-  <a href="#">Resources</a>
-  <a href="#">About</a>
+
+
+<nav class="top-nav">
+  <a href="page7.html">Resources</a>
+  <a href="page6.html">About</a>
 </nav>
 
+
 <div class="page3-layout">
+
   <div class="page3-inner">
     <h1 class="page3-title">Aging Society</h1>
 
     <p class="page3-desc">
-      Korea is becoming one of the world's oldest societies.<br>
-      This visualization reflects how shifting age structures reshape
-      work, cities, and everyday life.
+      Korea is moving into an aging era where the proportion of older adults continues to grow faster than any other age group. As life expectancy rises and younger generations shrink, the structure of the population is becoming increasingly top-heavy. This shift raises questions about care systems, intergenerational support, and how daily life will adapt as a larger share of society reaches advanced age.
+    </p>
+
+    <p class="page3-desc">
+      The visualization expands outward from a single center point, with each year shown as a circle positioned along a radiating line. The size of every circle and the length of its connecting line correspond directly to the projected percentage of elderly people for that year, making the demographic changes visually measurable. When hovered, the circle reveals the specific year and its projected elderly population share, emphasizing how the distribution of older adults grows across time.
     </p>
 
     <a href="page2.html" class="back-btn">← Back</a>
   </div>
+
 </div>
 
 </body>

@@ -1,6 +1,6 @@
 let years = [
-  2010, 2015, 2020, 2025, 2030, 2035, 2040,
-  2045, 2050, 2055, 2060, 2065, 2070
+  2010, 2015, 2020, 2025, 2030, 2035,
+  2040, 2045, 2050, 2055, 2060, 2065, 2070
 ];
 
 let population = [
@@ -21,6 +21,7 @@ function preload() {
 }
 
 function setup() {
+  userStartAudio();
   pixelDensity(1);
   createCanvas(windowWidth, windowHeight);
   textFont(interFont);
@@ -29,23 +30,23 @@ function setup() {
   maxPop = max(population);
   minPop = min(population);
 
-  boundaryR = min(width, height) * 0.35;
+  boundaryR = min(width, height) * 0.33;
 
   bgSound.loop();
-  bgSound.setVolume(0.5);
+  bgSound.setVolume(0.4);
 
   for (let i = 0; i < years.length; i++) {
-    const r = map(population[i], minPop, maxPop, 15, 50);
+    const r = map(population[i], minPop, maxPop, 12, 46);
 
     let brightness = 255 - map(population[i], minPop, maxPop, 10, 220);
-    brightness = min(brightness + 20, 255);
+    brightness = min(brightness + 25, 255);
 
     const ang = random(TWO_PI);
     const distFromCenter = random(boundaryR - r);
     const x = width / 2 + cos(ang) * distFromCenter;
     const y = height / 2 + sin(ang) * distFromCenter;
 
-    const velMag = 1.5;
+    const velMag = 1.45;
     let vx = random(-velMag, velMag);
     let vy = random(-velMag, velMag);
 
@@ -75,30 +76,31 @@ function draw() {
     c.y += c.vy;
 
     const d = dist(c.x, c.y, width / 2, height / 2);
+
     if (d + c.r > boundaryR) {
-      const normalAng = atan2(c.y - height / 2, c.x - width / 2);
+      const ang = atan2(c.y - height / 2, c.x - width / 2);
       const overlap = d + c.r - boundaryR;
 
-      c.x -= cos(normalAng) * overlap;
-      c.y -= sin(normalAng) * overlap;
+      c.x -= cos(ang) * overlap;
+      c.y -= sin(ang) * overlap;
 
-      const nx = cos(normalAng);
-      const ny = sin(normalAng);
-      const dotProd = c.vx * nx + c.vy * ny;
-      c.vx -= 2 * dotProd * nx;
-      c.vy -= 2 * dotProd * ny;
+      const nx = cos(ang);
+      const ny = sin(ang);
+      const dot = c.vx * nx + c.vy * ny;
+      c.vx -= 2 * dot * nx;
+      c.vy -= 2 * dot * ny;
 
-      c.vx += random(-0.6, 0.6);
-      c.vy += random(-0.6, 0.6);
+      c.vx += random(-0.55, 0.55);
+      c.vy += random(-0.55, 0.55);
 
-      const targetMag = 1.5;
-      const velMag = max(0.0001, sqrt(c.vx * c.vx + c.vy * c.vy));
-      c.vx = (c.vx / velMag) * targetMag;
-      c.vy = (c.vy / velMag) * targetMag;
+      const t = 1.45;
+      const m = sqrt(c.vx * c.vx + c.vy * c.vy);
+      c.vx = (c.vx / m) * t;
+      c.vy = (c.vy / m) * t;
 
-      c.flashTimer = 60;
-      const vol = map(c.pop, minPop, maxPop, 0.1, 1);
-      bgSound.setVolume(vol);
+      c.flashTimer = 50;
+      const volume = map(c.pop, minPop, maxPop, 0.1, 1);
+      bgSound.setVolume(volume * 0.8);
     }
 
     noStroke();
@@ -111,21 +113,12 @@ function draw() {
     ellipse(c.x, c.y, c.r * 2);
 
     fill(0);
-    textSize(constrain(c.r * 0.45, 12, 20));
+    textSize(constrain(c.r * 0.48, 12, 19));
     text(c.year, c.x, c.y);
   }
 }
 
-function drawBigTitle(txt) {
-  const titleSize = max(20, min(width, height) * 0.045);
-  textAlign(CENTER, BOTTOM);
-  textStyle(BOLD);
-  fill(0);
-  textSize(titleSize);
-  text(txt, width / 2, height - 60);
-}
-
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
-  boundaryR = min(width, height) * 0.35;
+  boundaryR = min(width, height) * 0.33;
 }
