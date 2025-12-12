@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;600;700&display=swap');
+
+body {
+  font-family: 'Inter Tight', sans-serif;
+  background-color: rgb(250, 243, 233);
+  margin: 0;
+  padding: 0;
+  color: #000;
+  overflow-x: hidden;
+}
+
+.wrapper {
+  width: 90%;
+  max-width: 1250px;
+  margin: 0 auto;
+  padding-top: 40px;
+}
+
+h1, h2 {
+  color: rgb(0, 0, 143);
+}
+
+iframe {
+  display: block;
+  margin: 20px auto;
+  border: none;
+}
+
+.exercises-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 45px;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 50px;
+  justify-items: center;
+}
+
+.exercises-grid iframe {
+  width: 100%;
+  max-width: 430px;
+  height: 320px;
+  border-radius: 4px;
+}
+
+.exercises-grid a {
+  text-decoration: none;
+  color: rgb(0, 0, 143);
+  font-weight: 600;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.vibe-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 45px;
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
+
+.vibe-item h2 {
+  margin-bottom: 5px;
+}
+
+.vibe-item a {
+  color: rgb(0, 0, 143);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.vibe-item p {
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+.reflection {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0,0,0,0.15);
+}
+
+footer {
+  text-align: center;
+  margin: 50px 0;
+  font-size: 14px;
+  opacity: 0.8;
+}
